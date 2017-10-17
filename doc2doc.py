@@ -91,6 +91,18 @@ class Spidey:
                         f.write(post_id+','+discuss_id+','+forum_id+','+discuss_url+','+post_date+','+post_time+','+username+','+title+','+content+'\n')
         f.close()
 
+class TestSpidey(unittest.TestCase):
+    def test_get_forums(self):
+        self.assertEqual(len(Spidey()._get_forums('https://web.archive.org/web/20160615110148/http://doc2doc.bmj.com/forumhome.html')), 15)
+        
+    def test_get_discussions(self):
+        self.assertEqual(len(Spidey()._get_discussions('https://web.archive.org/web/20160615110304/http://doc2doc.bmj.com/forums/open-clinical_cardiology')), 15)
+        
+    def test_get_posts(self):
+        self.assertEqual(len(Spidey()._get_posts('https://web.archive.org/web/20160615110304/http://doc2doc.bmj.com/forums/open-clinical_cardiology_effects-of-hot-bath-blood-pressure')), 7)
+    
 if __name__ == '__main__':
-    s = Spidey()
-    s.crawl('doc2doc.csv')
+    # To run unit tests, uncomment the proceeding line and comment the main entry point
+    # unittest.main()
+    
+    Spidey().crawl('doc2doc.csv')
