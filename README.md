@@ -13,5 +13,11 @@
 # Scrape the [Optimal Health Network (OHN) Live Chat Archives](https://web.archive.org/web/20130129082319/http://www.optimalhealthnetwork.com/Alternative-Health-Live-Chat-Log-Archive-s/196.htm) in 3 Steps
 
 1. Specify the output file to write results to by editing the `ohn.py` file's main entry point, e.g. `Spidey().crawl('ohn.csv')`
-2. Run the script via command line or terminal `python ohn.py` which will create a comma-separated output file (unit tests available)
+2. Run the script via command line or terminal `python ohn.py` which will create a comma-separated output file
 3. To run the unit tests, use `pytest -q ohn.py`
+
+# Scrape the [eHealth Forum's Ask A Doctor Discussions](https://ehealthforum.com/health/ask_a_doctor_forums.html) in 3 Steps
+
+1. Specify the output file to write results to by editing the `ehealthforum.py` file's main entry point, e.g. `Spidey().crawl('ehealthforum.csv')`
+2. Run the script via command line or terminal `python ehealthforum.py` which will create a tab-separated output file
+3. To run the unit tests, use `pytest -q ehealthforum.py`
