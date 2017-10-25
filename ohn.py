@@ -4,7 +4,7 @@ from lxml import html
 from lxml.html.soupparser import fromstring
 from hashlib import sha1
 from re import split
-import requests, sys, math, unittest
+import requests, sys, math
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -65,18 +65,15 @@ class Spidey:
                     f.write(id+','+chat_title+','+date+','+chat[0]+','+chat[1]+','+chat[2]+'\n')
         f.close()
 
-class TestSpidey(unittest.TestCase):
+class TestSpidey(object):
     def test_get_yearly_listings(self):
-        self.assertEqual(len(Spidey()._get_yearly_listings('https://web.archive.org/web/20130129082319/http://www.optimalhealthnetwork.com/Alternative-Health-Live-Chat-Log-Archive-s/196.htm')),9)
+        assert len(Spidey()._get_yearly_listings('https://web.archive.org/web/20130129082319/http://www.optimalhealthnetwork.com/Alternative-Health-Live-Chat-Log-Archive-s/196.htm')) == 9
         
     def test_get_chat_listings(self):
-        self.assertEqual(len(Spidey()._get_chat_listings('https://web.archive.org/web/20120212091416/https://www.optimalhealthnetwork.com/Alternative-Health-Live-Chat-Log-Archive-2012-s/793.htm')),4)
+        assert len(Spidey()._get_chat_listings('https://web.archive.org/web/20120212091416/https://www.optimalhealthnetwork.com/Alternative-Health-Live-Chat-Log-Archive-2012-s/793.htm')) == 4
         
     def test_get_chats(self):
-        self.assertEqual(len(Spidey()._get_chats('https://web.archive.org/web/20120209041230/http://www.optimalhealthnetwork.com/Healing-with-Essential-Oils-Alternative-Health-Live-Chat-s/794.htm')),102)
+        assert len(Spidey()._get_chats('https://web.archive.org/web/20120209041230/http://www.optimalhealthnetwork.com/Healing-with-Essential-Oils-Alternative-Health-Live-Chat-s/794.htm')) == 102
         
 if __name__ == '__main__':
-    # To run unit tests, uncomment the proceeding line and comment the main entry point
-    # unittest.main()
-    
     Spidey().crawl('ohn.csv')
