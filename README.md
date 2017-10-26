@@ -21,3 +21,9 @@
 1. Specify the output file to write results to by editing the `ehealthforum.py` file's main entry point, e.g. `Spidey().crawl('ehealthforum.csv')`
 2. Run the script via command line or terminal `python ehealthforum.py` which will create a tab-separated output file
 3. To run the unit tests, use `pytest -q ehealthforum.py`
+
+# Scrape the [Doctors Lounge Forum](https://www.doctorslounge.com/forums/) in 3 Steps
+
+1. Specify the output file to write results to by editing the `doctorslounge.py` file's main entry point, e.g. `Spidey().crawl('doctorslounge.csv')`
+2. Run the script via command line or terminal `python doctorslounge.py` which will create a tab-separated output file
+3. To run the unit tests, use `pytest -q doctorslounge.py`
