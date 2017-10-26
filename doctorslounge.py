@@ -19,7 +19,11 @@ class Spidey:
         page = requests.get(url)
         tree = html.fromstring(page.content)
 
-        num_posts = int(tree.xpath("//div[@class='pagination']/text()")[0].strip().replace(' topics','').replace(' topic',''))
+        num_posts = tree.xpath("//div[@class='pagination']/text()")[0].encode('punycode')[:-1].strip()
+        parse_int = num_posts.find(' topics')
+        if parse_int == -1:
+            parse_int = num_posts.find(' topic')
+        num_posts = int(num_posts[:parse_int])
         pages = int(math.ceil(num_posts/100))+1
         
         discussions = []
@@ -38,7 +42,7 @@ class Spidey:
         page = requests.get(url)
         tree = html.fromstring(page.content)
         
-        num_posts = tree.xpath("//div[@class='pagination']/text()")[0].encode('punycode')[:-1]
+        num_posts = tree.xpath("//div[@class='pagination']/text()")[0].encode('punycode')[:-1].strip()
         parse_int = num_posts.find(' posts')
         if parse_int == -1:
             parse_int = num_posts.find(' post')
