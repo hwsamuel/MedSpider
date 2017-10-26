@@ -58,6 +58,8 @@ class Spidey:
                 date = ''.join(date).strip()
                 if len(user) == 0:
                     user = element.xpath(".//a[@class='username-coloured']")
+                if len(user) == 0:
+                    continue
                 user = user[0].text.strip()
                 
                 body = element.xpath(".//div[@class='content']/text()")
