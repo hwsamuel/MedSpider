@@ -30,7 +30,7 @@ class Spidey:
         return discussions
 
     def _get_posts(self,url):
-        page = requests.get(url) #.replace('.html','_comments.html'))
+        page = requests.get(url)
         tree = html.fromstring(page.content)
 
         posts = []
