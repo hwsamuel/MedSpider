@@ -16,17 +16,21 @@ class Spidey:
         return tree.xpath("//a[@class='forumtitle']")
 
     def _get_discussions(self,url):
+        discussions = []
         page = requests.get(url)
         tree = html.fromstring(page.content)
 
-        num_posts = tree.xpath("//div[@class='pagination']/text()")[0].encode('punycode')[:-1].strip()
+        num_posts = tree.xpath("//div[@class='pagination']/text()")
+        if len(num_posts) == 0:
+            return discussions
+            
+        num_posts = num_posts[0].encode('punycode')[:-1].strip()
         parse_int = num_posts.find(' topics')
         if parse_int == -1:
             parse_int = num_posts.find(' topic')
         num_posts = int(num_posts[:parse_int])
         pages = int(math.ceil(num_posts/100))+1
         
-        discussions = []
         for i in range (1, pages+1):
             elements = tree.xpath("//a[@class='topictitle']")
             for element in elements:
@@ -39,17 +43,21 @@ class Spidey:
         return discussions
 
     def _get_posts(self,url):
+        posts = []
         page = requests.get(url)
         tree = html.fromstring(page.content)
         
-        num_posts = tree.xpath("//div[@class='pagination']/text()")[0].encode('punycode')[:-1].strip()
+        num_posts = tree.xpath("//div[@class='pagination']/text()")
+        if len(num_posts) == 0:
+            return posts
+        
+        num_posts = num_posts[0].encode('punycode')[:-1].strip()
         parse_int = num_posts.find(' posts')
         if parse_int == -1:
             parse_int = num_posts.find(' post')
         num_posts = int(num_posts[:parse_int])
         pages = int(math.ceil(num_posts/15))+1
         
-        posts = []
         for i in range (1, pages+1):
             elements = tree.xpath("//div[@class='postbody']")
             for element in elements:
