@@ -61,11 +61,13 @@ class Spidey:
         for i in range (1, pages+1):
             elements = tree.xpath("//div[@class='postbody']")
             for element in elements:
+                is_medic = False
                 user = element.xpath(".//a[@class='username']")
                 date = element.xpath(".//p[@class='author']/text()")
                 date = ''.join(date).strip()
                 if len(user) == 0:
                     user = element.xpath(".//a[@class='username-coloured']")
+                    is_medic = True
                 if len(user) == 0:
                     continue
                 user = user[0].text.strip()
@@ -74,7 +76,7 @@ class Spidey:
                 body = ''.join(body).strip().replace('\t','').replace('\n','').replace('\r','').encode('punycode')[:-1]
                 
                 id = sha1(user+date+body).hexdigest()
-                new_post = [id,user,date,body]
+                new_post = [id,user,is_medic,date,body]
                 posts.append(new_post)
             page = requests.get(url+'&start='+str(i*15))
             tree = html.fromstring(page.content)
@@ -87,7 +89,7 @@ class Spidey:
         forums = self._get_forums(main_url)
 
         f = open(out_file, 'w')
-        f.write('forum_id\tforum_name\tdiscussion_id\tdiscussion_title\tdiscussion_url\tpost_id\tposted_date\tusername\tcontent\n')
+        f.write('forum_id\tforum_name\tdiscussion_id\tdiscussion_title\tdiscussion_url\tpost_id\tposted_date\tusername\tis_medic\tcontent\n')
         
         for forum in forums:
             forum_url = base+forum.get('href')
@@ -104,9 +106,10 @@ class Spidey:
                 for post in posts:
                     post_id = post[0]
                     post_user = post[1]
-                    post_date = post[2]
-                    post_content = post[3]
-                    f.write(forum_id+'\t'+forum_name+'\t'+discuss_id+'\t'+discuss_title+'\t'+discuss_url+'\t'+post_id+'\t'+post_date+'\t'+post_user+'\t'+post_content+'\n')
+                    post_is_medic = str(post[2])
+                    post_date = post[3]
+                    post_content = post[4]
+                    f.write(forum_id+'\t'+forum_name+'\t'+discuss_id+'\t'+discuss_title+'\t'+discuss_url+'\t'+post_id+'\t'+post_date+'\t'+post_user+'\t'+post_is_medic+'\t'+post_content+'\n')
         f.close()
 
 class TestSpidey(object):
