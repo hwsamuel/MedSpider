@@ -33,3 +33,11 @@
 1. Specify the output file to write results to by editing the `hopkins.py` file's main entry point, e.g. `Spidey().crawl('hopkins.csv')`
 2. Run the script via command line or terminal `python hopkins.py` which will create a tab-separated output file
 3. To run the unit tests, use `pytest -q hopkins.py`
+
+# Scrape the [DocCheck Forum](http://www.doccheck.com/com/ask/) in 5 Steps
+
+1. [Register an account on DocCheck](http://www.doccheck.com/com/account/register/) and make sure that the account is medic-related (the scraper will not work fully without an account)
+2. Edit the `doccheck_auth.py` file to enter your DocCheck login credentials
+3. Specify the output file to write results to by editing the `doccheck.py` file's main entry point, e.g. `Spidey().crawl('doccheck.csv')`
+4. Run the script via command line or terminal `python doccheck.py` which will create a tab-separated output file
+5. To run the unit tests, use `pytest -q doccheck.py`
