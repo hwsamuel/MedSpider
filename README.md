@@ -27,3 +27,9 @@
 1. Specify the output file to write results to by editing the `doctorslounge.py` file's main entry point, e.g. `Spidey().crawl('doctorslounge.csv')`
 2. Run the script via command line or terminal `python doctorslounge.py` which will create a tab-separated output file
 3. To run the unit tests, use `pytest -q doctorslounge.py`
+
+# Scrape the [Johns Hopkins Breast Center Expert Answers](http://www.hopkinsbreastcenter.org/services/ask_expert/) in 3 Steps
+
+1. Specify the output file to write results to by editing the `hopkins.py` file's main entry point, e.g. `Spidey().crawl('hopkins.csv')`
+2. Run the script via command line or terminal `python hopkins.py` which will create a tab-separated output file
+3. To run the unit tests, use `pytest -q hopkins.py`
