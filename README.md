@@ -41,3 +41,15 @@
 3. Specify the output file to write results to by editing the `doccheck.py` file's main entry point, e.g. `Spidey().crawl('doccheck.csv')`
 4. Run the script via command line or terminal `python doccheck.py` which will create a tab-separated output file
 5. To run the unit tests, use `pytest -q doccheck.py`
+
+# Scrape the [Health Stack Exchange Q&A Forums](https://health.stackexchange.com/questions?pagesize=50&sort=newest) in 3 Steps
+
+1. Specify the output file and folder name (must exist) to write results to by editing the `healthse.py` file's main entry point, e.g. `Spidey().crawl('healthse.csv', 'healthse')`
+2. Run the script via command line or terminal `python healthse.py` which will create a collection of tab-separated output files (please note that Stack Exchange has rate limits): `questions`, `answers`, `question_comments`, `answer_comments`, and `linked_questions`
+3. To run the unit tests, use `pytest -q healthse.py`
+
+# Parse the [Health Stack Exchange Q&A Archives](https://archive.org/download/stackexchange) in 3 Steps
+
+1. Download the [`health.stackexchange.com.7z`](https://archive.org/download/stackexchange) archive file and extract it using [7-Zip](http://www.7-zip.org/download.html), it has Ubuntu and Windows versions
+2. Note the dataset folder where the extracted XML files are located
+3. The `SEParser.py` script can create question pairs using the XML files via `python SEParse.py dataset-folder`. It will save the results to a CSV file within the dataset folder. The script can be modified to perform other extraction and parsing tasks from the XML files.
