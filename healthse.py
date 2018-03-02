@@ -72,6 +72,8 @@ class Spidey:
         answers = tree.xpath("//div[contains(@class,'answercell')]")
         for ans in answers:
             aid = ans.xpath(".//div/div/div[@class='post-menu']/a[@class='short-link']")
+            if not aid:
+                continue
             aurl = base + aid[0].get('href')
             aid = aid[0].get('id')
             aid = aid[aid.rfind('-')+1:]
@@ -82,9 +84,16 @@ class Spidey:
                 auser = auser[0]
             else:
                 auser = ""
-            atime = ans.xpath(".//div[@class='user-action-time']/span[@class='relativetime']")[0].get('title')
+            atime = ans.xpath(".//div[@class='user-action-time']/span[@class='relativetime']")
+            if atime:
+                atime = atime[0].get('title')
+            else:
+                atime = ''
             avotes = tree.xpath("//div[@data-answerid='"+aid+"']/div/div/div[@class='vote']/span[@itemprop='upvoteCount']/text()")
-            avotes = avotes[0]
+            if avotes:
+                avotes = avotes[0]
+            else:
+                avotes = '0'
             all_answers.append([aid,aurl,abody,atime,auser,avotes])
         return all_answers
 
