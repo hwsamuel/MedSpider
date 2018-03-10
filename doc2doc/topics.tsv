@@ -1,0 +1,35 @@
+id	parent_id	source_id	title	description
+0		1	BMJ	
+1		1	Medical education & CPD	
+2		1	Closed clinical	
+3		1	Open clinical	
+4		1	Off duty	
+5		1	Members forums-6b3	
+6	0	1	BMJ	Discuss what's in the BMJ and on bmj.com
+7	0	1	Careers	Discuss training, careers, and education
+8	0	1	Evidence 2013	For everyone with an interest in evidence-based healthcare
+9	0	1	Going viral	Using social media during epidemics
+10	1	1	Student BMJ	Meet and chat with medical students from around the world
+11	1	1	Journal club	Discuss the latest medical articles
+12	1	1	Finals help!	Leave and read words of wisdom to help with medical school finals
+13	1	1	Medical education	Discuss medical education
+14	3	1	General clinical	Discuss any specialty in this open forum for all healthcare professionals
+15	3	1	Cardiology	Read and join discussion threads related to cardiology
+16	3	1	Diabetes	Discuss any aspect of type I or type II diabetes mellitus here
+17	3	1	Respiratory medicine	Discuss respiratory medicine here
+18	3	1	Medical ethics	Discuss ethical issues with the Medical Ethics department of the BMA and the Institute of Medical Ethics
+19	3	1	Psychiatry	Talk about mental health with the community
+20	3	1	Radiology	Chat about radiology with radiologists and those who want to get into the speciality
+21	3	1	Stroke	Read and join discussion threads related to stroke medicine
+22	3	1	Neurology	Talk about neurology with the community
+23	3	1	Sport and exercise medicine	Behind every sporting event is a potential injury ... Discuss sports, sporting injuries, and BJSM articles here
+24	3	1	Expedition and mountain medicine	Discuss dealing with hypoxia, especially hypobaric hypoxia, at high altitudes
+25	3	1	Quality & Safety	Discuss quality and safety in health care
+26	3	1	Anaesthesia	Talk about anaesthesia with the community
+27	3	1	Medicolegal	Discuss and get advice on medicolegal issues
+28	3	1	Public health	Talk about public health issues important to you, your country and other countries
+29	4	1	General	Discuss any topic
+30	4	1	News & media	Debate current medical affairs
+31	4	1	doc2doc feedback	Tell us what you think of doc2doc and ask questions about the site
+32	4	1	Medical mums	Share experiences of combining parenthood with a career in medicine
+33	4	1	GP Locums	Share experiences and learn from others
