@@ -10,13 +10,15 @@ MedSpiders is a collection of scripts that help with web scraping tasks in order
 
 ### [BMJ's Doc2Doc Discussions](https://web.archive.org/web/20160615105956/http://doc2doc.bmj.com/) [M2M]
 
-- Specify the output directory to write results to by editing the `doc2doc.py` file's main entry point, e.g. `Spidey().crawl('doc2doc')` (default is `doc2doc` if not specified)
-- Run the script via command line or terminal `python doc2doc.py` which will create tab-separated output files in the output directory you specified
+1. Please note that the BMJ's Doc2Doc forum is discontinued, the scraper uses cached web pages from [Wayback Machine/Internet Archive](https://archive.org)
+2. Specify the output directory to write results to by editing the `doc2doc.py` file's main entry point, e.g. `Spidey().crawl('doc2doc')` (default is `doc2doc` if not specified)
+3. Run the script via command line or terminal `python doc2doc.py` which will create tab-separated output files in the output directory you specified
 
 ### [DocCheck Blogs](http://www.doccheck.com/com/ask/) [M2M]
 
-- Specify the output directory to write results to by editing the `doccheck.py` file's main entry point, e.g. `Spidey().crawl('doccheck')` (default is `doccheck` if not specified)
-- Run the script via command line or terminal `python doccheck.py` which will create tab-separated output files in the specified directory: `blogs.tsv`, `comments.tsv`, and `topics.tsv`
+1. This scraper will require [registration](http://www.doccheck.com/com/account/register/) of a medic-related account on DocCheck
+2. Specify the output directory to write results to by editing the `doccheck.py` file's main entry point, e.g. `Spidey().crawl('doccheck')` (default is `doccheck` if not specified)
+3. Run the script via command line or terminal `python doccheck.py` which will create tab-separated output files in the specified directory: `blogs.tsv`, `comments.tsv`, and `topics.tsv`
 
 ### [eHealth Forum Questions](https://ehealthforum.com/health/ask_a_doctor_forums.html) [P2M]
 
