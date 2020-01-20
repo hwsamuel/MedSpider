@@ -55,12 +55,12 @@ class Spidey:
         new_post = [date1,body1,date2,body2]
         return new_post
         
-    def crawl(self,out_file):
+    def crawl(self,dir='hopkins'):
         base = 'http://www.hopkinsbreastcenter.org'
         main_url = base+'/services/ask_expert'
         forums = self._get_forums(main_url)
         
-        f = open(out_file, 'w')
+        f = open(dir+'/discussions.tsv', 'w')
         f.write('forum_name\tdiscussion_title\tdiscussion_url\tquestion_date\tquestion\tanswer_date\tanswer\n')
         
         for forum in forums:
@@ -101,4 +101,4 @@ class TestSpidey(object):
         assert len(Spidey()._get_posts('http://www.hopkinsbreastcenter.org/services/ask_expert/viewquestions.asp?id=999844124')) == 4
     
 if __name__ == '__main__':
-    Spidey().crawl('hopkins.csv')
+    Spidey().crawl()

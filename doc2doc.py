@@ -2,6 +2,7 @@
 
 from lxml import html
 from lxml.html.soupparser import fromstring
+from datetime import datetime
 import requests,pandas as pd
 
 class Spidey:
@@ -21,7 +22,7 @@ class Spidey:
         for category in categories:
             title = category.xpath(".//h2/text()")
             if title:
-                title = title[0].encode('punycode')[:-1].strip()
+                title = title[0].strip()
             else:
                 continue
 
@@ -44,7 +45,7 @@ class Spidey:
 
             title = topic.xpath(".//h3/a/text()")
             if title:
-                title = title[0].encode('punycode')[:-1].strip()
+                title = title[0].strip()
             else:
                 continue
 
@@ -61,7 +62,7 @@ class Spidey:
         return topics_df
 
     def get_threads(self,topic_id,topic_url):
-        threads_df = pd.DataFrame(columns=['id','source_id','topic_id','title','url','views','forum'])
+        threads_df = pd.DataFrame(columns=['id','source_id','topic_id','url','views','forum'])
         topic_page = requests.get(topic_url)
         tree = html.fromstring(topic_page.content)
         threads = tree.xpath("//div[@class='pluck-forums-main-discussion-inner-wrap']")
@@ -69,7 +70,7 @@ class Spidey:
             link = thread.xpath(".//a[contains(@class,'pluck-forums-discussion-title-link')]")
             if link:
                 url = link[0].get('href').strip()
-                title = link[0].get('title').encode('punycode')[:-1].strip()
+                title = link[0].get('title').strip()
             else:
                 continue
 
@@ -81,12 +82,12 @@ class Spidey:
                 num_views = int(num_views[0].strip())
             except Exception:
                 num_views = 0
-            threads_df.loc[len(threads_df)] = [self.thread_id,self.source_id,topic_id,title,url,num_views,self.forum]
+            threads_df.loc[len(threads_df)] = [self.thread_id,self.source_id,topic_id,url,num_views,self.forum]
             self.thread_id += 1
         return threads_df
 
     def get_discussions(self,thread_id,thread_url):
-        discussions_df = pd.DataFrame(columns=['id','thread_id','source_id','body','user_name','last_edited','upvotes','downvotes'])
+        discussions_df = pd.DataFrame(columns=['id','thread_id','body','user_name','last_updated','upvotes','downvotes'])
         discussion_page = requests.get(thread_url)
         try:
             tree = html.soupparser.fromstring(discussion_page.content, features='html.parser')
@@ -102,7 +103,7 @@ class Spidey:
                 continue
 
             if body:
-                body = body[0].replace('\n',' ').replace('\r',' ').replace('\t',' ').encode('punycode')[:-1].strip()
+                body = body[0].strip().replace('\n','<br />').replace('\r','<br />').replace('\t',' ')
             else:
                 continue
 
@@ -113,13 +114,14 @@ class Spidey:
             if len(user_name) == 0:
                 user_name = self.NULL
             else:
-                user_name = user_name[0].strip().encode('punycode')[:-1]
+                user_name = user_name[0].strip()
 
-            last_edited = discussion.xpath(".//p[@class='pluck-forums-main-forumpost-timestamp']/a/text()")
-            if len(last_edited) == 0:
-                last_edited = self.NULL
+            last_updated = discussion.xpath(".//p[@class='pluck-forums-main-forumpost-timestamp']/a/text()")
+            if len(last_updated) == 0:
+                last_updated = self.NULL
             else:
-                last_edited = last_edited[0].strip().replace(', ', ' ')
+                last_updated = last_updated[0].strip().replace(', ', ' ')
+                last_updated = str(datetime.strptime(last_updated,'%d/%m/%Y %I:%M %p'))
 
             votes = discussion.xpath(".//span[@class='pluck-score-volume pluck-score-has-info']")
             if len(votes) == 0:
@@ -128,14 +130,14 @@ class Spidey:
             else:
                 upvotes = int(votes[0].get('upvotes'))
                 downvotes = int(votes[0].get('downvotes'))
-            discussions_df.loc[len(discussions_df)] = [self.discussion_id,thread_id,self.source_id,body,user_name,last_edited,upvotes,downvotes]
+            discussions_df.loc[len(discussions_df)] = [self.discussion_id,thread_id,body,user_name,last_updated,upvotes,downvotes]
             self.discussion_id += 1
         return discussions_df
 
-    def crawl(self):
+    def crawl(self,dir='doc2doc'):
         categories = self.get_categories()
         categories_save = categories.drop('topics',axis=1)
-        categories_save.to_csv(path_or_buf='doc2doc/topics.tsv',sep='\t',index=False)
+        categories_save.to_csv(path_or_buf=dir+'/topics.tsv',sep='\t',index=False,encoding='utf-8')
 
         threads_header = True
         discussions_header = True
@@ -146,7 +148,7 @@ class Spidey:
                 continue
             else:
                 topics_save = topics.drop('url',axis=1)
-                topics_save.to_csv(path_or_buf='doc2doc/topics.tsv',sep='\t',index=False,mode='a',header=False)
+                topics_save.to_csv(path_or_buf=dir+'/topics.tsv',sep='\t',index=False,mode='a',header=False,encoding='utf-8')
 
             for tix,topic in topics.iterrows():
                 threads = self.get_threads(topic['id'],topic['url'])
@@ -154,16 +156,16 @@ class Spidey:
                     continue
                 else:
                     threads_save = threads.drop('url',axis=1)
-                    threads_save.to_csv(path_or_buf='doc2doc/threads.tsv',sep='\t',index=False,mode='a',header=threads_header)
-                    if threads_header:threads_header=False
+                    threads_save.to_csv(path_or_buf=dir+'/threads.tsv',sep='\t',index=False,mode='a',header=threads_header,encoding='utf-8')
+                    threads_header=False
 
                 for ixt,thread in threads.iterrows():
                     discussions = self.get_discussions(thread['id'],thread['url'])
                     if discussions.empty:
                         continue
                     else:
-                        discussions.to_csv(path_or_buf='doc2doc/discussions.tsv',sep='\t',index=False,mode='a',header=discussions_header)
-                        if discussions_header:discussions_header=False
+                        discussions.to_csv(path_or_buf=dir+'/discussions.tsv',sep='\t',index=False,mode='a',header=discussions_header,encoding='utf-8')
+                        discussions_header=False
 
 if __name__ == '__main__':
     Spidey().crawl()

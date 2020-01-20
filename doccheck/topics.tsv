@@ -1,0 +1,157 @@
+id	parent_id	source_id	title	description
+0		2	Diabetology	
+1		2	Medicine	
+2		2	Cardiology	
+3		2	Dentistry	
+4		2	Dermatology	
+5		2	Diabetology	
+6		2	ENT	
+7		2	General medicine	
+8		2	Gynaecology	
+9		2	Internal medicine	
+10		2	Neurology	
+11		2	Oncology	
+12		2	Ortopedics	
+13		2	Pediatrics	
+14		2	Psychiatry	
+15		2	Radiology	
+16		2	Surgery	
+17		2	Urology	
+18		2	Pharmaceutics	
+19		2	Studies	
+20	0	2	Health & Fitness	A blog providing Health related Useful information
+21	0	2	Healthy Benefits	Healthy Benefits for Diabetology
+22	0	2	Health Tips	
+23	0	2	Health and Medical News	Get the latest news and articles about health, science and medicine. A look at the technology and science behind medical discoveries and treatments.
+24	0	2	Pharma Industry News	Global pharmaceutical industry heavily relies on research projects for expanding its offerings among consumers. Continuous development of drug compounds, discovering new ones, establishing most effective routes of drug delivery after intensive clinical trials are
+25	0	2	Research Reports	Future Market Insights (FMI) is a leading market intelligence and consulting firm. We deliver syndicated research reports, custom research reports and consulting services, which are personalized in nature.
+26	0	2	Emerging Trends in Healthcare Industry	The healthcare information technology industry deals with the storage, management, and exchange of healthcare records between hospitals, laboratories, patients, insurance agencies, and government bodies. New advances in the information technology domain, coupled with
+27	0	2	Medical Devices Industry	Medical Devices Industry Size, Share, Trends, Forecast, Growth, Opportunities By Big Market Research
+28	0	2	Chronic Disease	Get to know all about chronic diseases, its effects and solutions!
+29	0	2	Market Research Blog	
+30	1	2	Dental Health Blog	Dental Health Blog is a useful blog where we share the information and news related to the dental care tips.
+31	1	2	Finding the best medical care	Knowing how to get the best medical care is a world-wide concern. If your medical care is provided by the government, private insurance, or is fee for service, it is important to be able to know you and your family are receiving the best possible care. Far too many
+32	1	2	The Hopeful Cancer Doc	Jennifer Lycette, MD, blogs at The Hopeful Cancer Doc, her personal blog on practicing oncology, maintaining hope in medicine, work-life balance, and various other musings. She started blogging with an idea to promote hope for physicians, both in our practices and our
+33	1	2	Healthcare Tips	
+34	1	2	Dental Health Blog - Dulwich Dental Clinic	Dental Health Blog is a useful Blog where we share the information and news on dental health.
+35	1	2	Dental News Blog	Dental News Blog is a useful blog where I share dental health related information and news regularly.
+36	1	2	Steven Curley, M.D., F.A.C.S. Professor and Chief of Surgical Oncology	
+37	1	2	myIV.com	Welcome to myIV.com – where we provide answers to any questions related to IVs – from the most basic to complex. We are the resource to empower and inform patients and caregivers on IVs and IV therapy. Intravenous (IV) therapy is a routine part of treatment for
+38	1	2	Nisha Mehta, MD	Musings about life in medicine and work life balance. The good, the bad, and the need to keep it all in perspective.
+39	1	2	Natural health cure	
+40	2	2	myIV.com	Welcome to myIV.com – where we provide answers to any questions related to IVs – from the most basic to complex. We are the resource to empower and inform patients and caregivers on IVs and IV therapy. Intravenous (IV) therapy is a routine part of treatment for
+41	2	2	Tales of the Heart	A cardiology fellow's take on the world of medicine, particularly with regards to the doctor-patient relationship.
+42	2	2	Living Healthy	A range of articles on health issues, dental care, the body and more.
+43	2	2	Health blog	My first blog
+44	2	2	Heart health	This blog talks about how small lifestyle changes can help improve our heart health & decrease the risk of heart issues.
+45	2	2	Physician Wellness	In support of physician wellness at the personal, institutional and cultural levels in all stages of training and practice.
+46	2	2	Pharma Industry News	Global pharmaceutical industry heavily relies on research projects for expanding its offerings among consumers. Continuous development of drug compounds, discovering new ones, establishing most effective routes of drug delivery after intensive clinical trials are
+47	2	2	The Scientist Writer LLC	Welcome to my blog! I hope you’ll enjoy reading about the latest developments in food science/nutrition and medical research. This blog is here for informational purposes and will consist of short, thoroughly researched articles on a variety of medical and science
+48	2	2	The Peek and Shriek Post	The Peek and Shriek Post is a healthcare blog founded by Mario Nacinovich. The blog offers original content and covers relevant and timely topics across the healthcare spectrum.
+49	2	2	Pediatric Stories from Ukraine	I have created this blog to show interesting cases and studies what I meet in my routine everyday work. Here, in Ukraine, we have no modern technical support, but I think any specialist finds something interesting for him/her in my posts. Welcome and don't hesitate to
+50	3	2	Dental Health Blog	Dental Health Blog is a useful blog where we share the information and news related to the dental care tips.
+51	3	2	Dental Health Blog - Dulwich Dental Clinic	Dental Health Blog is a useful Blog where we share the information and news on dental health.
+52	3	2	Dental News Blog	Dental News Blog is a useful blog where I share dental health related information and news regularly.
+53	3	2	Living Healthy	A range of articles on health issues, dental care, the body and more.
+54	3	2	Healthy Living For Everyone	Interesting information about medicine, modern technologies and researches in healthcare and healthy lifestyle tips
+55	3	2	Broadway Family Dental	Broadway Family Dental 1152 Broadway Brooklyn, New York 11221 (718) 455-4400 https://www.broadwayfamilydentalpc.com
+56	3	2	Health blog	My first blog
+57	3	2	Dental Care	Our journal is helping people to understand about dental care and assist you improving your Smile.
+58	3	2	Refadoc	
+59	3	2	Smile Dentist UK Blogs	At Smile Dentist Clinic, London, our private expert dentist team offers cosmetic dentistry, facial aesthetics & Invisalign, etc.
+60	4	2	Living Healthy	A range of articles on health issues, dental care, the body and more.
+61	4	2	Healthy Living For Everyone	Interesting information about medicine, modern technologies and researches in healthcare and healthy lifestyle tips
+62	4	2	Physician Wellness	In support of physician wellness at the personal, institutional and cultural levels in all stages of training and practice.
+63	4	2	Pharma Industry News	Global pharmaceutical industry heavily relies on research projects for expanding its offerings among consumers. Continuous development of drug compounds, discovering new ones, establishing most effective routes of drug delivery after intensive clinical trials are
+64	4	2	The Peek and Shriek Post	The Peek and Shriek Post is a healthcare blog founded by Mario Nacinovich. The blog offers original content and covers relevant and timely topics across the healthcare spectrum.
+65	5	2	Physician Wellness	In support of physician wellness at the personal, institutional and cultural levels in all stages of training and practice.
+66	5	2	Pharma Industry News	Global pharmaceutical industry heavily relies on research projects for expanding its offerings among consumers. Continuous development of drug compounds, discovering new ones, establishing most effective routes of drug delivery after intensive clinical trials are
+67	6	2	Physician Wellness	In support of physician wellness at the personal, institutional and cultural levels in all stages of training and practice.
+68	6	2	The Peek and Shriek Post	The Peek and Shriek Post is a healthcare blog founded by Mario Nacinovich. The blog offers original content and covers relevant and timely topics across the healthcare spectrum.
+69	7	2	Healthylife	All About Healthy Life
+70	7	2	Healthcare Tips	
+71	7	2	myIV.com	Welcome to myIV.com – where we provide answers to any questions related to IVs – from the most basic to complex. We are the resource to empower and inform patients and caregivers on IVs and IV therapy. Intravenous (IV) therapy is a routine part of treatment for
+72	7	2	Natural health cure	
+73	7	2	Ejaz Elhak	
+74	7	2	Healthy Living For Everyone	Interesting information about medicine, modern technologies and researches in healthcare and healthy lifestyle tips
+75	7	2	Health tips	
+76	7	2	INTERVENTIONAL PAIN CENTER	In spine and musculoskeletal cases, pain management serves with a variety of purposes. These are generally distinguished from surgical treatments. With pain management Henderson, you can identify the source of a patient’s back pain, determine the areas to be
+77	7	2	Hirudotherapy - Positive Effects	If you consult Essays Professors, you'll know that leeches cure chronic skin diseases like scabies, psoriasis, eczematous dermatitis, chronic ulcers, ring worms, reddish freckles and favus. Phlebitis and thrombotic (blood clotting) conditions. To decrease the blood
+78	7	2	AchtzigZwanzig	Hier gibt es leicht verdauliche Info-Häppchen.
+79	8	2	Healthcare Tips	
+80	8	2	Living Healthy	A range of articles on health issues, dental care, the body and more.
+81	8	2	Healthy Living For Everyone	Interesting information about medicine, modern technologies and researches in healthcare and healthy lifestyle tips
+82	8	2	Physician Wellness	In support of physician wellness at the personal, institutional and cultural levels in all stages of training and practice.
+83	8	2	Pharma Industry News	Global pharmaceutical industry heavily relies on research projects for expanding its offerings among consumers. Continuous development of drug compounds, discovering new ones, establishing most effective routes of drug delivery after intensive clinical trials are
+84	8	2	The Peek and Shriek Post	The Peek and Shriek Post is a healthcare blog founded by Mario Nacinovich. The blog offers original content and covers relevant and timely topics across the healthcare spectrum.
+85	8	2	Pregnancy and Lactation	A blog about healthy mothers and healthy babies from the perspective of an expert in Maternal Health. For more information, please visit http://blog.pregistry.com.
+86	9	2	Ethos of Medicine	
+87	9	2	Physician Wellness	In support of physician wellness at the personal, institutional and cultural levels in all stages of training and practice.
+88	9	2	http://www.thehealthvictory.com/max-gain-xplode/	Max Gain Xplode Regardless of how you feel about bulkiness, there are many benefits to muscle workouts. You can improve your self-esteem, feel more confident, and strengthen your joints and lungs when you combine muscle building with cardio workouts. Read More >>>
+89	9	2	Pharma Industry News	Global pharmaceutical industry heavily relies on research projects for expanding its offerings among consumers. Continuous development of drug compounds, discovering new ones, establishing most effective routes of drug delivery after intensive clinical trials are
+90	9	2	The Peek and Shriek Post	The Peek and Shriek Post is a healthcare blog founded by Mario Nacinovich. The blog offers original content and covers relevant and timely topics across the healthcare spectrum.
+91	9	2	Pediatric Stories from Ukraine	I have created this blog to show interesting cases and studies what I meet in my routine everyday work. Here, in Ukraine, we have no modern technical support, but I think any specialist finds something interesting for him/her in my posts. Welcome and don't hesitate to
+92	10	2	Physician Wellness	In support of physician wellness at the personal, institutional and cultural levels in all stages of training and practice.
+93	10	2	Pharma Industry News	Global pharmaceutical industry heavily relies on research projects for expanding its offerings among consumers. Continuous development of drug compounds, discovering new ones, establishing most effective routes of drug delivery after intensive clinical trials are
+94	10	2	Infrascanner Market: Global Industry Analysis and Forecast 2016 - 2024	Infrascanner is a handheld device used for detection of brain hematoma which is generally caused by a head injury such as from a fall, an accidents, sports injuries or an assault. Traumatic Brain Injury (TBI) can be mild, moderate or severe which is assessed based on
+95	10	2	The Peek and Shriek Post	The Peek and Shriek Post is a healthcare blog founded by Mario Nacinovich. The blog offers original content and covers relevant and timely topics across the healthcare spectrum.
+96	10	2	mecobalamin	Our company is working on the clinical to investigate the different uses of mecobalamin 1000ug. We have interesting feedback from different doctors but to more specific and definite about any recommendations we are interested to share our experience and learn from the
+97	11	2	The Hopeful Cancer Doc	Jennifer Lycette, MD, blogs at The Hopeful Cancer Doc, her personal blog on practicing oncology, maintaining hope in medicine, work-life balance, and various other musings. She started blogging with an idea to promote hope for physicians, both in our practices and our
+98	11	2	Steven Curley, M.D., F.A.C.S. Professor and Chief of Surgical Oncology	
+99	11	2	myIV.com	Welcome to myIV.com – where we provide answers to any questions related to IVs – from the most basic to complex. We are the resource to empower and inform patients and caregivers on IVs and IV therapy. Intravenous (IV) therapy is a routine part of treatment for
+100	11	2	Mesothelioma Treatment Community	Mesothelioma Treatment Community is dedicated to the assistance and guidance of asbestos and mesothelioma victims around the world. We exist to not only inspire hope during these unbearable times but to also provide comprehensive information through this blog, the
+101	11	2	Physician Wellness	In support of physician wellness at the personal, institutional and cultural levels in all stages of training and practice.
+102	11	2	Pharma Industry News	Global pharmaceutical industry heavily relies on research projects for expanding its offerings among consumers. Continuous development of drug compounds, discovering new ones, establishing most effective routes of drug delivery after intensive clinical trials are
+103	11	2	The Peek and Shriek Post	The Peek and Shriek Post is a healthcare blog founded by Mario Nacinovich. The blog offers original content and covers relevant and timely topics across the healthcare spectrum.
+104	12	2	INTERVENTIONAL PAIN CENTER	In spine and musculoskeletal cases, pain management serves with a variety of purposes. These are generally distinguished from surgical treatments. With pain management Henderson, you can identify the source of a patient’s back pain, determine the areas to be
+105	12	2	Physician Wellness	In support of physician wellness at the personal, institutional and cultural levels in all stages of training and practice.
+106	12	2	Pharma Industry News	Global pharmaceutical industry heavily relies on research projects for expanding its offerings among consumers. Continuous development of drug compounds, discovering new ones, establishing most effective routes of drug delivery after intensive clinical trials are
+107	12	2	The Peek and Shriek Post	The Peek and Shriek Post is a healthcare blog founded by Mario Nacinovich. The blog offers original content and covers relevant and timely topics across the healthcare spectrum.
+108	12	2	Opiate Withdrawal	This blog will provide all the necessary information about Opiates.
+109	13	2	myIV.com	Welcome to myIV.com – where we provide answers to any questions related to IVs – from the most basic to complex. We are the resource to empower and inform patients and caregivers on IVs and IV therapy. Intravenous (IV) therapy is a routine part of treatment for
+110	13	2	Living Healthy	A range of articles on health issues, dental care, the body and more.
+111	13	2	MommyDoc	I am a pediatrician in private practice in my hometown and a mother to four young children writing about the trials and tribulations of doing both jobs on a daily basis. My writing reflects my personality; it is direct, to the point, sometimes whimsical, and always
+112	13	2	Pergnancy and Lactation	A blog for pregnant and breastfeeding women written by Pregistry's medical professionals.
+113	13	2	Kids and me - the english version	
+114	13	2	Physician Wellness	In support of physician wellness at the personal, institutional and cultural levels in all stages of training and practice.
+115	13	2	Pharma Industry News	Global pharmaceutical industry heavily relies on research projects for expanding its offerings among consumers. Continuous development of drug compounds, discovering new ones, establishing most effective routes of drug delivery after intensive clinical trials are
+116	13	2	The Peek and Shriek Post	The Peek and Shriek Post is a healthcare blog founded by Mario Nacinovich. The blog offers original content and covers relevant and timely topics across the healthcare spectrum.
+117	13	2	Pregnancy and Lactation	A blog about healthy mothers and healthy babies from the perspective of an expert in Maternal Health. For more information, please visit http://blog.pregistry.com.
+118	13	2	Pediatric Stories from Ukraine	I have created this blog to show interesting cases and studies what I meet in my routine everyday work. Here, in Ukraine, we have no modern technical support, but I think any specialist finds something interesting for him/her in my posts. Welcome and don't hesitate to
+119	14	2	Physician Wellness	In support of physician wellness at the personal, institutional and cultural levels in all stages of training and practice.
+120	14	2	The Peek and Shriek Post	The Peek and Shriek Post is a healthcare blog founded by Mario Nacinovich. The blog offers original content and covers relevant and timely topics across the healthcare spectrum.
+121	14	2	Health: Kamagra	Hallo, ich bin John, Freunde Am heutigen Tag Ich bin so glücklich wie nie, weil meine Vergangenheit nicht so fein, aufgrund meiner Erektion Problem. Auf der gleichen Zeit war ich auch vor einer redicouls meiner Liebe, zu helfen, meine Freunde mich aus diesen
+122	15	2	Nisha Mehta, MD	Musings about life in medicine and work life balance. The good, the bad, and the need to keep it all in perspective.
+123	15	2	Physician Wellness	In support of physician wellness at the personal, institutional and cultural levels in all stages of training and practice.
+124	15	2	Pharma Industry News	Global pharmaceutical industry heavily relies on research projects for expanding its offerings among consumers. Continuous development of drug compounds, discovering new ones, establishing most effective routes of drug delivery after intensive clinical trials are
+125	15	2	The Peek and Shriek Post	The Peek and Shriek Post is a healthcare blog founded by Mario Nacinovich. The blog offers original content and covers relevant and timely topics across the healthcare spectrum.
+126	16	2	myIV.com	Welcome to myIV.com – where we provide answers to any questions related to IVs – from the most basic to complex. We are the resource to empower and inform patients and caregivers on IVs and IV therapy. Intravenous (IV) therapy is a routine part of treatment for
+127	16	2	Living Healthy	A range of articles on health issues, dental care, the body and more.
+128	16	2	Hannah Siu's Blog	
+129	16	2	Physician Wellness	In support of physician wellness at the personal, institutional and cultural levels in all stages of training and practice.
+130	16	2	Testo Bio Max Creatine might be a good solution for you	Testo Bio Max Creatine might be a good solution for you. Creatine can help you to train harder and longer when you add it to a diet full of proteins and carbohydrates. Consult a physician before using supplements to ensure safety. Open this link = = =
+131	16	2	Pharma Industry News	Global pharmaceutical industry heavily relies on research projects for expanding its offerings among consumers. Continuous development of drug compounds, discovering new ones, establishing most effective routes of drug delivery after intensive clinical trials are
+132	16	2	The Peek and Shriek Post	The Peek and Shriek Post is a healthcare blog founded by Mario Nacinovich. The blog offers original content and covers relevant and timely topics across the healthcare spectrum.
+133	17	2	Physician Wellness	In support of physician wellness at the personal, institutional and cultural levels in all stages of training and practice.
+134	17	2	Pharma Industry News	Global pharmaceutical industry heavily relies on research projects for expanding its offerings among consumers. Continuous development of drug compounds, discovering new ones, establishing most effective routes of drug delivery after intensive clinical trials are
+135	17	2	The Peek and Shriek Post	The Peek and Shriek Post is a healthcare blog founded by Mario Nacinovich. The blog offers original content and covers relevant and timely topics across the healthcare spectrum.
+136	18	2	Health tips	
+137	18	2	Health & Fitness	A blog providing Health related Useful information
+138	18	2	AchtzigZwanzig	Hier gibt es leicht verdauliche Info-Häppchen.
+139	18	2	The Issue of Obesity	This blog is dedicated to the most common and important problems that are linked to the human health. It highlights the most urgent issues on this topic.
+140	18	2	Pergnancy and Lactation	A blog for pregnant and breastfeeding women written by Pregistry's medical professionals.
+141	18	2	The Pregistry Blog	A blog about pregnancy and lactation written by medical professionals. For more articles, go to Pregistry's official blog The Pulse at https://blog.pregistry.com.
+142	18	2	Jane Otterson's Health Blog	A blog that talks about Health.
+143	18	2	Health and Medical News	Get the latest news and articles about health, science and medicine. A look at the technology and science behind medical discoveries and treatments.
+144	18	2	Pharma Industry News	Global pharmaceutical industry heavily relies on research projects for expanding its offerings among consumers. Continuous development of drug compounds, discovering new ones, establishing most effective routes of drug delivery after intensive clinical trials are
+145	18	2	Breast Surgery clinic	
+146	19	2	Healthy Tips For You	While going about our lives, especially as we get older, we think of our mortality and focus more emphasis on health tips. We read glossy magazine articles which advise us what to eat, what to drink, and how much of it should we consume. Morning and evening news
+147	19	2	Alice and Nursing	Just a few thoughts on my work in nursing. I hope you will all enjoy it.
+148	19	2	Job Trends in Healthcare Sector	"The ""Job Trends in Healthcare Sector"" is a healthcare blog founded by Alice Berg. The blog offers original content and covers relevant up-to-date content across hot job trends in the healthcare sector."
+149	19	2	Healthcare Apps Solutions	Healthcare technology is more than managing the health of individuals and coordinating care. Lifestyle has changed a lot and no one cares about their health and lifestyle. Eating junk food, sitting for long hours and little to no physical activity can lead to the
+150	19	2	Kid's Health	
+151	19	2	BRAIN FOOD	I am a PhD student in Biology, enjoying to communicate science instead of doing science. To me it is crucial to understand complicated and complex scientific publications and to explain this research in order to benefit from the latest findings. I am very passionate
+152	19	2	Interesting Science	
+153	19	2	blog	
+154	19	2	Healthy Living	
+155	19	2	Medical Tube	Discussion of latest trends related to medicine and nanotechnology.

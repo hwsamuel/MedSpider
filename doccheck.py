@@ -2,138 +2,183 @@
 
 from lxml import html
 from lxml.html.soupparser import fromstring
-from hashlib import sha1
-from re import split
-import requests, sys, math
-
-reload(sys)
-sys.setdefaultencoding('utf-8')
-
-# You have to create a medic-related account on DocCheck
-# Update your login details in doccheck_auth.py
-from doccheck_auth import *
+from datetime import datetime
+import re,requests,pandas as pd
 
 class Spidey:
-    def auth(self):
-        username = DOCCHECK_USERNAME
-        password = DOCCHECK_PWD
-        session_requests = requests.session()
-        token_url = "http://www.doccheck.com/com/core/user/loginpage/"
-        login_url = "http://www.doccheck.com/com/user/login"
-        result = session_requests.get(token_url)
-        tree = html.fromstring(result.text)
-        authenticity_token = list(set(tree.xpath("//input[@name='returnUrlEnc']/@value")))[0]
-        payload = {"username": username, "password": password, "returnUrlEnc": authenticity_token}
-        session_requests.post(login_url, data = payload, headers = dict(referer=login_url))
-        return session_requests
-        
-    def _get_discussions(self,url):
-        discussions = []
-        page = requests.get(url)
-        tree = html.fromstring(page.content)
-        
-        num_discussions = tree.xpath("//span[@class='paginationNumericNum']/text()")
-        if len(num_discussions) == 0:
-            return discussions
-        num_discussions = num_discussions[0].encode('punycode')[:-1].strip()
-        parse_int = num_discussions.find(' ')
-        num_discussions = int(num_discussions[parse_int+1:])
-        
-        for i in range(1, num_discussions+1):
-            elements = tree.xpath("//div[@class='askQuestionListingEntry']")
-            for element in elements:
-                item = element.xpath(".//div[@class='askQuestionListingEntryTitle']/a")[0]
-                furl = item.get('href')
-                num_replies = element.xpath(".//div[@class='askQuestionListingAnswerCountContainer']/a/span/text()")[0]
-                ftitle = item.text
-                discussions.append([furl,ftitle,int(num_replies)])
-            page = requests.get(url+'/home/index/page/'+str(i+1))
-            tree = html.fromstring(page.content)
-        return discussions
-        
-    def _get_posts(self,url,srequests=None):
-        posts = []
-        if srequests == None:
-            srequests = self.auth()
-        page = srequests.get(url, headers = dict(referer = url))
-        tree = html.fromstring(page.content)
-        
-        question = tree.xpath("//div[@class='askQuestionContentContainer']/p/text()")
-        question = ''.join(question).replace('\n',' ').replace('\r',' ').replace('\t',' ').strip()
-        date = tree.xpath("//div[@class='askQuestionContentOwnerAndCreatedContainer']/p[1]/text()")
-        date = ''.join(date)[3:13]
-        author = tree.xpath("//div[@class='askQuestionContentOwnerAndCreatedContainer']/p[1]/a/text()")
-        if len(author) == 0:
-            author = "Unknown"
-        else:
-            author = author[0]
-        role = tree.xpath("//div[@class='askQuestionContentOwnerAndCreatedContainer']/p[1]/span/text()")
-        if len(role) == 0:
-            role = "Unspecified"
-        else:
-            role = role[0].strip()
-        posts.append([question, date, author, role])
-        
-        answers = tree.xpath("//div[@class='askAnswerEntryRight']")
-        for element in answers:
-            answer = element.xpath(".//div[@class='askAnswerEntryBody']/p/text()")
-            if len(answer) == 0:
-                answer = ""
-            else:
-                answer = answer[0].strip()
-            replier = element.xpath(".//span[@class='dcAnswerPerformerName']/a/text()")
-            if len(replier) == 0:
-                replier = "Unknown"
-            else:
-                replier = replier[0]
-            date = element.xpath(".//div[@class='dcAnswerUserInfoContainer']/text()")
-            date = ''.join(date).strip()
-            parse = date.find('at')+3
-            date = date[parse:parse+10]
-            rrole = element.xpath(".//div[@class='dcAnswerUserInfoContainer']/span[3]/text()")
-            if len(rrole) == 0:
-                rrole = "Unspecified"
-            else:
-                rrole = rrole[0].strip()
-                rrole = rrole[1:len(rrole)-1]
-            posts.append([answer, date, replier, rrole])
-        return posts
+  def __init__(self):
+    self.source_id = 2
+    self.topic_id = 0
+    self.blog_id = 0
+    self.comment_id = 0
+    self.forum = 'm2m'
+    self.NULL = ''
 
-    def crawl(self,out_file):
-        base = 'http://www.doccheck.com/com/ask'
-        main_url = base
-        sreq = self.auth()
-        
-        f = open(out_file, 'w')
-        f.write('discussion_id\tdiscussion_title\tdiscussion_url\tpost_date\tpost_author\tauthor_role\tcontent\n')
-        
-        discussions = self._get_discussions(main_url)
-        for discussion in discussions:
-            discuss_url = discussion[0]
-            discuss_title = discussion[1]
-            discuss_num_replies = discussion[2]
-            if discuss_num_replies == 0: # Ignore discussions without replies
-                continue
-            discuss_id = sha1(discuss_url).hexdigest()
-            
-            posts = self._get_posts(discuss_url,sreq)
-            for post in posts:
-                post_content = post[0]
-                post_date = post[1]
-                post_author = post[2]
-                author_role = post[3]
-                f.write(discuss_id+'\t'+discuss_title+'\t'+discuss_url+'\t'+post_date+'\t'+post_author+'\t'+author_role+'\t'+post_content+'\n')
-        f.close()
+  def get_categories(self):
+    categories_df = pd.DataFrame(columns=['id','parent_id','source_id','title','description','url'])
+    categories_page = requests.get('http://news.doccheck.com/en/blogs/')
+    tree = html.fromstring(categories_page.content)
+    categories = tree.xpath("//div[@id='dcHierarchicalCategoryWidget']")[0].xpath(".//a")
+    for category in categories:
+      title = category.get('title').strip()
+      url = category.get('href')
+      if title == self.NULL or url == self.NULL:
+          continue
+      else:
+          categories_df.loc[len(categories_df)] = [self.topic_id,self.NULL,self.source_id,title,self.NULL,url]
+          self.topic_id += 1
+    return categories_df
 
-class TestSpidey(object):
-    def test_get_discussions(self):
-        assert len(Spidey()._get_discussions('http://www.doccheck.com/com/ask')) == 205
-        
-    def test_get_posts1(self):
-        assert len(Spidey()._get_posts('http://www.doccheck.com/com/ask/question/view/id/592759/')) == 6
-    
-    def test_get_posts2(self):
-        assert len(Spidey()._get_posts('http://www.doccheck.com/com/ask/question/view/id/593057/')) == 3
-    
+  def get_topics(self,category_id,category_url):
+    topics_df = pd.DataFrame(columns=['id','parent_id','source_id','url','title','description'])
+    topics_page = requests.get(category_url)
+    tree = html.fromstring(topics_page.content)
+    topics = tree.xpath("//div[@class='userblogListingItemInfo']")
+    for topic in topics:
+      info = topic.xpath(".//div[@class='userblogListingItemTitle']/h2/a")
+      if info:
+        info = info[0]
+        title = info.text.strip()
+        url = info.get('href')
+      else:
+        continue
+
+      description = topic.xpath(".//div[@class='userblogListingItemDescription']/p/text()")
+      if description:
+        description = description[0].strip().replace('more...','')
+      else:
+        continue
+      topics_df.loc[len(topics_df)] = [self.topic_id,category_id,self.source_id,url,title,description]
+      self.topic_id += 1
+    return topics_df
+
+  def get_blogs(self,topic_id,topic_url):
+    blogs_df = pd.DataFrame(columns=['id','topic_id','source_id','title','body','user_name','last_updated','views','forum','comments'])
+    blogs_page = requests.get(topic_url)
+    tree = html.fromstring(blogs_page.content)
+    blogs = tree.xpath("//div[@class='userblogPostListingItemTitle']/h2/a")
+    for blog_link in blogs:
+        url = blog_link.get('href')
+        title = blog_link.text.strip()
+        blog = self._get_blog(url)
+        body = blog[0]
+        user_name = blog[1]
+        last_updated = blog[2]
+        num_views = blog[3]
+        comments = blog[4]
+        blogs_df.loc[len(blogs_df)] = [self.blog_id,topic_id,self.source_id,title,body,user_name,last_updated,num_views,self.forum,comments]
+        self.blog_id += 1
+    return blogs_df
+
+  def get_comments(self,blog_id,comments_tree):
+    comments_df = pd.DataFrame(columns=['id','blog_id','body','user_name','last_updated'])
+    for comment in comments_tree:
+        body = comment.xpath(".//div[@class='annotationEntryBodyContent']/text()")
+        if body:
+            body = body[0].strip()
+        else:
+            continue
+
+        user_name = comment.xpath(".//span[@class='dcAnnotationPerformerName']/a/text()")
+        if user_name:
+            user_name = user_name[0].strip()
+        else:
+            user_name = self.NULL
+
+        last_updated = comment.xpath(".//div[@class='dcAnnotationUserInfoContainer']")
+        if not last_updated:
+            last_updated = self.NULL
+        else:
+            last_updated = [p.text_content().strip() for p in last_updated]
+            if len(last_updated) == 0:
+                last_updated = self.NULL
+            else:
+                last_updated = last_updated[0].strip()
+                regex = re.compile("\d{2}\.\d{2}\.\d{4}")
+                last_updated = regex.search(last_updated)
+                if last_updated == None:
+                    last_updated = self.NULL
+                else:
+                    last_updated = last_updated.group()
+                    last_updated = str(datetime.strptime(last_updated,'%d.%m.%Y'))
+
+        comments_df.loc[len(comments_df)] = [self.comment_id,blog_id,body,user_name,last_updated]
+        self.comment_id += 1
+    return comments_df
+
+  def _get_blog(self,blog_url):
+      page = requests.get(blog_url)
+      tree = html.soupparser.fromstring(page.content, features='html.parser')
+      last_updated = tree.xpath("//div[@class='userblogPostDetailDate']/text()")
+      if last_updated:
+          last_updated = last_updated[0].strip()
+          last_updated = str(datetime.strptime(last_updated,'%d.%m.%Y'))
+      else:
+          last_updated = self.NULL
+
+      num_views = tree.xpath("//div[@class='userblogPostViewCounter']/text()")
+      if num_views:
+          num_views = int(num_views[0].strip().replace(' Views',''))
+      else:
+          num_views = 0
+
+      body_raw = tree.xpath("//div[@itemprop='articleBody']")
+      if body_raw:
+          body = [p.text_content().strip() for p in body_raw]
+      else:
+          return None
+
+      if body:
+          body = body[0].strip().replace('\n','<br />').replace('\r','<br />').replace('\t',' ')
+      else:
+          return None
+
+      if body == self.NULL:
+          return None
+
+      user_name = tree.xpath("//a[@class='userContactBoxImg']")
+      if user_name:
+          user_name = user_name[0].get('title').strip()
+      else:
+          user_name = self.NULL
+
+      comments = tree.xpath("//div[@itemprop='comment']")
+      return [body,user_name,last_updated,num_views,comments]
+
+  def crawl(self,dir='doccheck'):
+    categories = self.get_categories()
+    categories_save = categories.drop('url',axis=1)
+    categories_save.to_csv(path_or_buf=dir+'/topics.tsv',sep='\t',index=False,encoding='utf-8')
+
+    blogs_header = True
+    comments_header = True
+
+    for cix,category in categories.iterrows():
+      topics = self.get_topics(category['id'],category['url'])
+      if topics.empty:
+        continue
+      else:
+        topics_save = topics.drop('url',axis=1)
+        topics_save.to_csv(path_or_buf=dir+'/topics.tsv',sep='\t',index=False,mode='a',header=False,encoding='utf-8')
+
+        for tix,topic in topics.iterrows():
+          blogs = self.get_blogs(topic['id'],topic['url'])
+          if blogs.empty:
+              continue
+          else:
+              blogs_save = blogs.drop('comments',axis=1)
+              blogs_save.to_csv(path_or_buf=dir+'/blogs.tsv',sep='\t',index=False,mode='a',header=blogs_header,encoding='utf-8')
+              blogs_header = False
+
+          for bix,blog in blogs.iterrows():
+              tree = blog['comments']
+              if len(tree) == 0:
+                  continue
+              else:
+                  comments = self.get_comments(blog['id'],tree)
+
+              comments.to_csv(path_or_buf=dir+'/comments.tsv',sep='\t',index=False,mode='a',header=comments_header,encoding='utf-8')
+              comments_header = False
+
 if __name__ == '__main__':
-    Spidey().crawl('doccheck.csv')
+  Spidey().crawl()

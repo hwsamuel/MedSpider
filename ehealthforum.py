@@ -58,13 +58,13 @@ class Spidey:
             posts.append(new_post)
         return posts
 
-    def crawl(self,out_file):
+    def crawl(self,dir='ehealthforum'):
         base = 'https://ehealthforum.com/health/' 
         main_url = base+'ask_a_doctor_forums.html'
 
         forums = self._get_forums(main_url)
 
-        f = open(out_file, 'w')
+        f = open(dir+'/chats.tsv', 'w')
         f.write('forum_id\tforum_name\tdiscussion_id\tdiscussion_title\tdiscussion_url\tpost_id\tposted_date\tusername\tcontent\n')
         
         for forum in forums:
@@ -98,4 +98,4 @@ class TestSpidey(object):
         assert len(Spidey()._get_posts('https://ehealthforum.com/health/i-need-help-i-drink-every-night-t281246.html')) == 2
     
 if __name__ == '__main__':
-    Spidey().crawl('ehealthforum.csv')
+    Spidey().crawl()

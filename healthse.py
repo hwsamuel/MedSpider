@@ -135,17 +135,17 @@ class Spidey:
             all_answers.append([aid,aurl,abody,atime,auser,avotes])
         return all_answers
 
-    def crawl(self,out_file,out_folder):
-        f1 = open(out_folder+'/questions_'+out_file, 'w')
+    def crawl(self,dir='healthse'):
+        f1 = open(dir+'/questions.tsv', 'w')
         f1.write('question_id\tquestion_url\tquestion_title\tquestion_body\ttime_stamp\tusername\tvotes\tfavorites\ttags\n')
 
-        f2 = open(out_folder+'/question_comments_'+out_file, 'w')
+        f2 = open(dir+'/question_comments.tsv', 'w')
         f2.write('question_id\tcomment\ttime_stamp\tusername\n')
 
-        f3 = open(out_folder+'/answers_'+out_file, 'w')
+        f3 = open(dir+'/answers.tsv', 'w')
         f3.write('question_id\tanswer_id\tanswer_url\tanswer\ttime_stamp\tusername\tvotes\n')
 
-        f4 = open(out_folder+'/answer_comments_'+out_file, 'w')
+        f4 = open(dir+'/answer_comments.tsv', 'w')
         f4.write('question_id\tanswer_id\tcomment\ttime_stamp\tusername\n')
 
         base = 'https://health.stackexchange.com'

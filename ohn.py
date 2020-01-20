@@ -44,14 +44,14 @@ class Spidey:
                 posts.append(new_post)
         return posts
 
-    def crawl(self,out_file):
+    def crawl(self,dir='ohn'):
         base = 'https://web.archive.org' 
         main_url = base+'/web/20130129082319/http://www.optimalhealthnetwork.com/Alternative-Health-Live-Chat-Log-Archive-s/196.htm'
 
         year_listings = self._get_yearly_listings(main_url)
         
-        f = open(out_file, 'w')
-        f.write('thread_id,chat_title,date,timestamp,user,message\n')
+        f = open(dir+'/chats.tsv', 'w')
+        f.write('thread_id\tchat_title\tdate\ttimestamp\tuser\tmessage\n')
         for year_listing in year_listings:
             chat_listing_url = year_listing.get('href')
             chat_listings = self._get_chat_listings(chat_listing_url)
@@ -62,7 +62,7 @@ class Spidey:
                 chats = self._get_chats(chat_url)
                 id = sha1(chat_title+date).hexdigest()
                 for chat in chats:
-                    f.write(id+','+chat_title+','+date+','+chat[0]+','+chat[1]+','+chat[2]+'\n')
+                    f.write(id+'\t'+chat_title+'\t'+date+'\t'+chat[0]+'\t'+chat[1]+'\t'+chat[2]+'\n')
         f.close()
 
 class TestSpidey(object):
@@ -76,4 +76,4 @@ class TestSpidey(object):
         assert len(Spidey()._get_chats('https://web.archive.org/web/20120209041230/http://www.optimalhealthnetwork.com/Healing-with-Essential-Oils-Alternative-Health-Live-Chat-s/794.htm')) == 102
         
 if __name__ == '__main__':
-    Spidey().crawl('ohn.csv')
+    Spidey().crawl()

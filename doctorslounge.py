@@ -82,13 +82,13 @@ class Spidey:
             tree = html.fromstring(page.content)
         return posts
 
-    def crawl(self,out_file):
+    def crawl(self,dir='doctorslounge'):
         base = 'https://www.doctorslounge.com/forums/'
         main_url = base
 
         forums = self._get_forums(main_url)
 
-        f = open(out_file, 'w')
+        f = open(dir+'/discussions.tsv', 'w')
         f.write('forum_id\tforum_name\tdiscussion_id\tdiscussion_title\tdiscussion_url\tpost_id\tposted_date\tusername\tis_medic\tcontent\n')
         
         for forum in forums:
@@ -129,4 +129,4 @@ class TestSpidey(object):
         assert len(Spidey()._get_posts('https://www.doctorslounge.com/forums/viewtopic.php?f=62&t=5528')) == 17
     
 if __name__ == '__main__':
-    Spidey().crawl('doctorslounge.csv')
+    Spidey().crawl()

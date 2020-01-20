@@ -39,7 +39,7 @@ for ev, p in mytree: # This section looks up the actual post title using the par
 pairs = duplicate+related
 shuffle(pairs) # Randomize duplicates and related posts
 id = 0
-f = open(dataset_folder+'.csv', 'w') # Output is stored into a files that matches the dataset folder name with a .csv extension
+f = open(dataset_folder+'/'+dataset_folder+'.csv', 'w') # Output is stored into a file that matches the dataset folder name with a .csv extension
 f.write('"id","qid1","qid2","question1","question2","is_duplicate"\n')
 for p in pairs: # This section generates the output
     pid1 = p[0]
