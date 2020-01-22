@@ -1,6 +1,6 @@
 ### Overview
 
-MedSpiders is a collection of scripts that help with web scraping tasks in order to gather online conversations from health forums. MedSpiders targets the following listed online forums, which are categorized by the type of interaction between **Patients (P)** and **Medics (M)**.
+MedSpider is a collection of scripts that help with web scraping tasks in order to gather online conversations from health forums. MedSpider targets the following listed online forums, which are categorized by the type of interaction between **Patients (P)** and **Medics (M)**.
 
 ### General Requirements
 
