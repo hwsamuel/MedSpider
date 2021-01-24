@@ -1,4 +1,4 @@
-### Overview
+### MedSpider Health Forums Data Collector [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
 MedSpider is a collection of scripts that help with web scraping tasks in order to gather online conversations from health forums. MedSpider targets the following listed online forums, which are categorized by the type of interaction between **Patients (P)** and **Medics (M)**.
 
