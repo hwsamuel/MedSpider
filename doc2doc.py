@@ -29,8 +29,9 @@ class Spidey:
             if title == self.NULL:
                 continue
 
-            categories_df.loc[len(categories_df)] = [self.topic_id,self.NULL,self.source_id,title,self.NULL,category]
-            self.topic_id += 1
+            if title not in categories_df['title'].tolist():
+                categories_df.loc[len(categories_df)] = [self.topic_id,self.NULL,self.source_id,title,self.NULL,category]
+                self.topic_id += 1
         return categories_df
 
     def get_topics(self,category_id,tree):
@@ -57,8 +58,9 @@ class Spidey:
                 description = description[0]
             else:
                 description = self.NULL
-            topics_df.loc[len(topics_df)] = [self.topic_id,category_id,self.source_id,url,title,description]
-            self.topic_id += 1
+            if title not in topics_df['title'].tolist():
+                topics_df.loc[len(topics_df)] = [self.topic_id,category_id,self.source_id,url,title,description]
+                self.topic_id += 1
         return topics_df
 
     def get_threads(self,topic_id,topic_url):
@@ -82,8 +84,10 @@ class Spidey:
                 num_views = int(num_views[0].strip())
             except Exception:
                 num_views = 0
-            threads_df.loc[len(threads_df)] = [self.thread_id,self.source_id,topic_id,url,num_views,self.forum]
-            self.thread_id += 1
+            
+            if url not in threads_df['url'].tolist():
+                threads_df.loc[len(threads_df)] = [self.thread_id,self.source_id,topic_id,url,num_views,self.forum]
+                self.thread_id += 1
         return threads_df
 
     def get_discussions(self,thread_id,thread_url):
@@ -130,8 +134,10 @@ class Spidey:
             else:
                 upvotes = int(votes[0].get('upvotes'))
                 downvotes = int(votes[0].get('downvotes'))
-            discussions_df.loc[len(discussions_df)] = [self.discussion_id,thread_id,body,user_name,last_updated,upvotes,downvotes]
-            self.discussion_id += 1
+
+            if body not in discussions_df['body'].tolist():
+                discussions_df.loc[len(discussions_df)] = [self.discussion_id,thread_id,body,user_name,last_updated,upvotes,downvotes]
+                self.discussion_id += 1
         return discussions_df
 
     def crawl(self,dir='doc2doc'):

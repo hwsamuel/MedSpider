@@ -65,7 +65,7 @@ class Spidey:
         forums = self._get_forums(main_url)
 
         f = open(dir+'/chats.tsv', 'w')
-        f.write('forum_id\tforum_name\tdiscussion_id\tdiscussion_title\tdiscussion_url\tpost_id\tposted_date\tusername\tcontent\n')
+        f.write('forum_id\tforum_name\tdiscussion_id\tdiscussion_title\tdiscussion_url\tpost_id\tposted_date\tuser_name\tcontent\n')
         
         for forum in forums:
             forum_url = base+forum.get('href')
